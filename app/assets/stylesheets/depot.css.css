@@ -32,3 +32,26 @@ background: #141;
 color: #bfb;
 font-size: small;
 }
+#footer{
+background: #9c9;
+padding-top: 10px;
+padding-bottom: 2px;
+border-bottom: 2px solid;
+font: small-caps 10px/10px "Times New Roman", serif;
+color: #000;
+text-align: center;
+}
+/* Styles for the cart in the main page */
+/*#store .cart_title {
+font: 120% bold;
+}
+#store .item_price, #store .total_line {
+text-align: right;
+}
+#store .total_line .total_cell {
+font-weight: bold;
+border-top: 1px solid #595;*/
+#store .entry form, #store .entry form div {
+display: inline;
+}
+}
