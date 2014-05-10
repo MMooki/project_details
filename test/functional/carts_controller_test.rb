@@ -38,7 +38,7 @@ class CartsControllerTest < ActionController::TestCase
     put :update, id: @cart, cart: {  }
     assert_redirected_to cart_path(assigns(:cart))
   end
-
+  
 test "should destroy cart" do
 assert_difference('Cart.count' , -1) do
 delete :destroy, :id => @cart.to_param
