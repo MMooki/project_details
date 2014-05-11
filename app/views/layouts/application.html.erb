@@ -12,11 +12,16 @@
  <%= image_tag("logo.png" ) %>
 <%= @page_title || "Buy A Bicycle" %>
  </div>
-<div id="columns">
+ <div id="columns">
 <div id="side">
 <div id="cart">
+<% if @cart %>
+<%= hidden_div_if(@cart.line_items.empty?, :id => "cart" ) do %>
 <%= render @cart %>
-</div> <a href="http://www....">Home</a><br />
+<% end %>
+<% end %>
+</div>
+ <a href="http://www....">Home</a><br />
  <a href="http://www..../faq">Questions</a><br />
  <a href="http://www..../news">News</a><br />
  <a href="http://www..../contact">Contact</a><br />
