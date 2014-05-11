@@ -6,5 +6,7 @@
 <td class="total_cell"><%= sprintf("R%0.02f" ,@cart.total_price) %></td>
 </tr>
 </table>
-<%= button_to 'Empty cart', @cart, :method => :delete,
-:confirm => 'Are you sure?' %>
+<%= button_to 'Empty cart', @cart, :method => :delete, :confirm => 'Are you sure?' %>
+
+
+
