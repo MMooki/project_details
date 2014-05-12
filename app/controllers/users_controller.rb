@@ -40,19 +40,21 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-  def create
-    @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(users_url, :notice => "User #{@user.name} was successfully created." ) }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+def create
+@user = User.new(params[:user])
+respond_to do |format|
+if @user.save
+format.html { redirect_to(users_url,
+:notice => "User #{@user.name} was successfully created." ) }
+format.xml { render :xml => @user,
+:status => :created, :location => @user }
+else
+format.html { render :action => "new" }
+format.xml { render :xml => @user.errors,
+:status => :unprocessable_entity }
+end
+end
+end
 
   # PUT /users/1
   # PUT /users/1.json
@@ -62,7 +64,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(users_url, :notice => "User #{@user.name} was successfully updated." ) }
-        format.json { head :no_content }
+format.xml { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -73,8 +75,12 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+  begin
+@user.destroy
+flash[:notice] = "User #{@user.name} deleted"
+  rescue Exception => e
+flash[:notice] = e.message
+end
 
     respond_to do |format|
       format.html { redirect_to users_url }
