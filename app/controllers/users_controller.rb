@@ -59,18 +59,19 @@ end
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(users_url, :notice => "User #{@user.name} was successfully updated." ) }
+@user = User.find(params[:id])
+respond_to do |format|
+if @user.update_attributes(params[:user])
+format.html { redirect_to(users_url,
+:notice => "User #{@user.name} was successfully updated." ) }
 format.xml { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+else
+format.html { render :action => "edit" }
+format.xml { render :xml => @user.errors,
+:status => :unprocessable_entity }
+end
+end
+end
 
   # DELETE /users/1
   # DELETE /users/1.json
